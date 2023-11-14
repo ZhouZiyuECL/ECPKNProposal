@@ -1,32 +1,29 @@
 %%%%%%%%%%%%%%%%% 模板声明 %%%%%%%%%%%%%%%%% 
 \NeedsTeXFormat{LaTeX2e}[2007/10/19]
-\ProvidesClass{buaascseproposal}[The LaTeX template for thesis proposal of SCSE, BUAA]
-\typeout{Document Class `buaascseproposal' v0.1 by ZKL (2022/07/01)}
+\typeout{Document Class `ecpknproposal' v1.0 by LCS (2023/11/14), adapted from `buaascseproposal' v0.1 by ZKL on Github}
 
 %%%%%%%%%%%%%%%%% 模板选项 %%%%%%%%%%%%%%%%% 
-\newif\ifbuaaatmaster\buaaatmasterfalse
-\newif\ifbuaaatdoctor\buaaatdoctorfalse
-\newif\ifbuaaatproposal\buaaatproposalfalse
+\newif\ifbuaaatbeginterm\buaaatbegintermfalse
+\newif\ifbuaaatmidterm\buaaatmidtermfalse
 \newif\ifbuaaatreview\buaaatreviewfalse
 \newif\ifbuaaatcolor\buaaatcolorfalse
 
-\DeclareOption{master}{\buaaatmastertrue}
-\DeclareOption{doctor}{\buaaatdoctortrue}
-\DeclareOption{proposal}{\buaaatproposaltrue}
+\DeclareOption{beginterm}{\buaaatbegintermtrue}
+\DeclareOption{midterm}{\buaaatmidtermtrue}
 \DeclareOption{review}{\buaaatreviewtrue}
 \DeclareOption{color}{\buaaatcolortrue}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexart}}
 \ProcessOptions\relax
 % 引用ctexart及基本设置
-\LoadClass[a4paper,UTF8,titlepage,zihao=-4]{ctexart}
+\LoadClass[a4paper,UTF8,titlepage,zihao=-4,AutoFakeBold]{ctexart}
 
 %%%%%%%%%% 宏包 %%%%%%%%%%
 % 全局通用宏包
 \RequirePackage{ifthen}
 
 % 数学相关和字体设置
-\RequirePackage{amsmath,amssymb,amsfonts,mathrsfs,bm,bbm}
+\RequirePackage{amsmath,amssymb,amsfonts,mathrsfs,bm}
 % \RequirePackage{mathptmx}
 \RequirePackage[amsmath,thmmarks,hyperref]{ntheorem}
 % \RequirePackage{txfonts}
@@ -36,15 +33,16 @@
 \let\songti\relax
 \let\heiti\relax
 
-\setCJKfamilyfont{songti}[AutoFakeBold={1.25}]{SimSun}
-\setCJKfamilyfont{heiti}[AutoFakeBold={1.25}]{SimHei}
-\setCJKfamilyfont{hwxingkai}[AutoFakeBold={1.25}]{STXingkai}
-\setCJKfamilyfont{hwkaiti}[AutoFakeBold={1.25}]{STKaiti}
+% TODO: (USER)请使用者将本部分的字体按照本地环境的使用情况进行修改
+\setCJKfamilyfont{zhsong}[AutoFakeBold = {4.17}]{SimSun}
+\setCJKfamilyfont{zhhei}[AutoFakeBold = {3.17}]{SimHei}
+\setCJKfamilyfont{hwxingkai}[AutoFakeBold={3}]{STXINGKA}
+\setCJKfamilyfont{kaishu}[AutoFakeBold={3}]{simkai}
 
-\newcommand{\songti}{\CJKfamily{songti}}
-\newcommand{\heiti}{\CJKfamily{heiti}}
+\newcommand{\songti}{\CJKfamily{zhsong}}
+\newcommand{\heiti}{\CJKfamily{zhhei}}
 \newcommand{\hwxingkai}{\CJKfamily{hwxingkai}}
-\newcommand{\hwkaiti}{\CJKfamily{hwkaiti}}
+\newcommand{\kaiti}{\CJKfamily{kaishu}}
 
 \renewcommand{\textbf}[1]{{\bfseries\songti #1}}
 
@@ -77,19 +75,14 @@
     \gdef\buaaatuniversity{#1}
 }
 % 学院
-\gdef\buaaatschool{计算机学院}
+\gdef\buaaatschool{中法工程师学院/国际通用工程学院}
 \newcommand{\school}[1]{%
     \gdef\buaaatschool{#1}
 }
 % 专业
-\gdef\buaaatmajor{计算机应用技术}
+\gdef\buaaatmajor{系统工程}
 \newcommand{\major}[1]{%
     \gdef\buaaatmajor{#1}
-}
-% 方向
-\gdef\buaaatdirection{虚拟现实技术}
-\newcommand{\direction}[1]{%
-    \gdef\buaaatdirection{#1}
 }
 % 专业
 \gdef\buaaatauthorname{作者姓名}
@@ -123,15 +116,19 @@
 }
 
 
-\ifbuaaatdoctor
-    \gdef\buaaatdegree{博士}
-\else
-    \gdef\buaaatdegree{硕士}
-\fi
+\gdef\buaaatdegree{硕士}
 
-\ifbuaaatproposal
+\ifbuaaatbeginterm
     \gdef\buaaatdoctype{开题报告}
 \else
+    \gdef\buaaatdoctype{报告}
+\fi
+
+\ifbuaaatmidterm
+    \gdef\buaaatdoctype{中期报告}
+\fi
+
+\ifbuaaatreview
     \gdef\buaaatdoctype{文献综述}
 \fi
 
@@ -171,12 +168,12 @@
     \fancyfoot{}
     \pagenumbering{roman}
 
-    \fancyhead[L]{\zihao{-5}\hwkaiti
+    \fancyhead[L]{\zihao{-5}\kaishu
         \buaaatthesistitle \vspace{1.5mm}
     }
     \fancyfoot[C]{
         \hspace{1.5mm}
-        \hwkaiti\zihao{-5}\buaaatuniversity\buaaatschool\buaaatdegree 学位论文\buaaatdoctype
+        \kaishu\zihao{-5}\buaaatuniversity\buaaatschool\buaaatdegree 学位论文\buaaatdoctype
         \hfill\hfill
         \songti\zihao{-5}$\cdot$\quad\thepage\quad$\cdot$
         \hspace{1.5mm}
@@ -192,12 +189,12 @@
     \setcounter{page}{1}
     \pagenumbering{arabic}
 
-    \fancyhead[L]{\zihao{-5}\hwkaiti
+    \fancyhead[L]{\zihao{-5}\kaishu
         \buaaatthesistitle \vspace{1.5mm}
     }
     \fancyfoot[C]{
         \hspace{1.5mm}
-        \hwkaiti\zihao{-5}\buaaatuniversity\buaaatschool\buaaatdegree 学位论文\buaaatdoctype
+        \kaishu\zihao{-5}\buaaatuniversity\buaaatschool\buaaatdegree 学位论文\buaaatdoctype
         \hfill\hfill
         \songti\zihao{-5}$\cdot$\quad\thepage\quad$\cdot$
         \hspace{1.5mm}
@@ -215,24 +212,22 @@
 %%%%%%%%%% 封面 %%%%%%%%%%
 \RequirePackage{booktabs}
 \RequirePackage{titling}
-\RequirePackage{makecell}
 \renewcommand*\maketitle{
     \begin{titlepage}
         \linespread{1.2}
         \vspace*{\fill}
         \begin{center}
-            {\xiaoer \bfseries \hwkaiti \buaaatuniversity \buaaatschool \par}
+            {\xiaoer \bfseries \kaishu \buaaatuniversity \\ \buaaatschool \par}
             \vspace{3cm}
             {\yihao \bfseries \heiti \buaaatdegree 研究生学位论文 \par \buaaatdoctype \par} 
             \vspace{4cm} 
-            {\xiaosan \hwkaiti \linespread{1.5}
-            \begin{tabular}{lp{8cm}<{\centering}} % 8cm是单元格宽度，如果希望换行垂直居中则改为lm{8cm}<{\centering}
-            论文题目： & \buaaatthesistitle \\ \cline{2-2}
-            专~~~~~~~~业： & \buaaatmajor \\ \cline{2-2}
-            研究方向： & \buaaatdirection \\ \cline{2-2}
-            研~~究~~生： & \buaaatauthorname \\ \cline{2-2}
-            学~~~~~~~~号： & \buaaatstuno \\ \cline{2-2}
-            指导教师： & \buaaattutor \\ \cline{2-2}
+            {\xiaosan \kaishu 
+            \begin{tabular}{rc}
+            \textbf{\kaishu 论文题目}： & \buaaatthesistitle \\ \cline{2-2}
+            \textbf{\kaishu 专~~~~~~~~业}： & \buaaatmajor \\ \cline{2-2}
+            \textbf{\kaishu 研~~究~~生}： & \buaaatauthorname \\ \cline{2-2}
+            \textbf{\kaishu 学~~~~~~~~号}： & \buaaatstuno \\ \cline{2-2}
+            \textbf{\kaishu 指导教师}： & \buaaattutor \\ \cline{2-2}
             \end{tabular} \par}
             \vspace{3cm} 
             {\sanhao \heiti \buaaatuniversity \buaaatschool \par 
@@ -330,7 +325,7 @@
 % 格式
 \ctexset{
     section={
-        format={\zihao{3}\heiti},
+        format={\zihao{3}\heiti\bfseries},
         aftername={\quad},
         beforeskip={.5\baselineskip},
         afterskip={.25\baselineskip},
@@ -399,12 +394,12 @@
 \RequirePackage{subfigure}
 \RequirePackage{booktabs}
 \RequirePackage{caption}
-\DeclareCaptionFont{kai}{\hwkaiti}
+\DeclareCaptionFont{kai}{\kaishu}
 \captionsetup[table]{labelsep=quad, font=kai}
 \captionsetup[figure]{labelsep=quad, font=kai}
 \captionsetup[figure]{
   position=bottom, margin=0mm, font=kai,
-  aboveskip=6pt, belowskip=-15pt, justification=centerlast}
+  aboveskip=6pt, belowskip=0pt, justification=centerlast}
 \captionsetup[table]{
   position=top, margin=0mm, font=kai,
   aboveskip=0pt, belowskip=0pt, justification=centerlast}
@@ -422,7 +417,6 @@
 \RequirePackage{multirow}
 
 % 重定义table/tabular/tabularx环境，使表格内为5号字
-% TODO(huxuan): 支持 longtable
 \let\oldtable\table
 \let\endoldtable\endtable
 \renewenvironment{table}[1][!ht]
@@ -468,7 +462,6 @@
 \definecolor{LightCyan}{rgb}{0.88,1,1}
 \definecolor{bg}{rgb}{0.95,0.95,0.95}
 
-% \RequirePackage{minted}
 % \setminted{
 %   frame=single,
 %   bgcolor=bg,
@@ -499,7 +492,9 @@
 \newcommand{\cabstractname}{摘~~~~~~~~要}
 \newenvironment{cabstract}{%
     \vspace{5ex}
+    \phantomsection
     \centerline{\heiti\zihao{3} \cabstractname}
+    \addcontentsline{toc}{section}{\cabstractname}
     \vspace{5ex}
     \setlength{\parindent}{24bp}
     }{%
@@ -511,10 +506,66 @@
 \newcommand{\eabstractname}{Abstract}
 \newenvironment{eabstract}{%
     \vspace{5ex}
-    \centerline{\bfseries \zihao{3} \eabstractname}
+    \phantomsection
+    \centerline{\bfseries \zihao{3} \eabstractname
+    \addcontentsline{toc}{section}{\eabstractname}}
     \vspace{5ex}
     \setlength{\parindent}{24bp}
     }{%
     \vskip 21bp
     {\bfseries \zihao{-4} Key words: } \buaaatekeyword
+}
+
+%%%%%%%%%% Title %%%%%%%%%%%%%
+
+\def \makefulltoc {
+\newpage
+\phantomsection
+\pdfbookmark[section]{\contentname}{contents}
+\tableofcontents
+\newpage
+\phantomsection
+\pdfbookmark[section]{\figurecontentname}{lof}
+\listoffigures
+\newpage
+\phantomsection
+\pdfbookmark[section]{\tablecontentname}{lot}
+\listoftables
+\newpage
+\pagestyle{mainmatter}
+}
+
+\def \maketoc {
+\newpage
+\phantomsection
+\pdfbookmark[section]{\contentname}{contents}
+\tableofcontents
+\newpage
+\pagestyle{mainmatter}
+}
+
+\def \maketocandfigure {
+\newpage
+\phantomsection
+\pdfbookmark[section]{\contentname}{contents}
+\tableofcontents
+\newpage
+\phantomsection
+\pdfbookmark[section]{\figurecontentname}{lof}
+\listoffigures
+\newpage
+\pagestyle{mainmatter}
+}
+
+\def \maketocandtable {
+\newpage
+\phantomsection
+\pdfbookmark[section]{\contentname}{contents}
+\tableofcontents
+\newpage
+\phantomsection
+\pdfbookmark[section]{\tablecontentname}{lot}
+\listoftables
+\newpage
+\pagestyle{mainmatter}
 }
