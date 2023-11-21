@@ -8,7 +8,7 @@
 ```latex
 \documentclass[beginterm,color]{relative/path/of/ecpknproposal}
 ```
-
+需要使用XeTeX编译。
 具体选项
 - beginterm/review/midterm：开题报告/文献综述/中期报告
 - color: 显示不同超链接颜色, 不加入则不显示, 推荐不加入
