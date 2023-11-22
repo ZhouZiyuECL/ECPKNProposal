@@ -34,10 +34,14 @@
 \let\heiti\relax
 
 % TODO: (USER)请使用者将本部分的字体按照本地环境的使用情况进行修改
-\setCJKfamilyfont{zhsong}[AutoFakeBold = {4.17}]{SimSun}
-\setCJKfamilyfont{zhhei}[AutoFakeBold = {3.17}]{SimHei}
-\setCJKfamilyfont{hwxingkai}[AutoFakeBold={3}]{STXINGKA}
-\setCJKfamilyfont{kaishu}[AutoFakeBold={3}]{simkai}
+\setCJKfamilyfont{zhsong}[Path=../font/, AutoFakeBold = {4.17}]{SimSun}
+\setCJKfamilyfont{zhhei}[Path=../font/,AutoFakeBold = {3.17}]{SimHei}
+\setCJKfamilyfont{hwxingkai}[Path=../font/,AutoFakeBold={3}]{STXINGKA}
+\setCJKfamilyfont{kaishu}[Path=../font/,AutoFakeBold={3}]{simkai}
+% \setCJKfamilyfont{zhsong}[AutoFakeBold = {4.17}]{}
+% \setCJKfamilyfont{zhhei}[AutoFakeBold = {3.17}]{}
+% \setCJKfamilyfont{hwxingkai}[AutoFakeBold={3}]{../font/STXINGKA.TTF}
+% \setCJKfamilyfont{kaishu}[AutoFakeBold={3}]{../font/simkai.ttf}
 
 \newcommand{\songti}{\CJKfamily{zhsong}}
 \newcommand{\heiti}{\CJKfamily{zhhei}}
@@ -217,17 +221,17 @@
         \linespread{1.2}
         \vspace*{\fill}
         \begin{center}
-            {\xiaoer \bfseries \kaishu \buaaatuniversity \\ \buaaatschool \par}
+            {\xiaoer \bf \kaishu \buaaatuniversity \\ \buaaatschool \par}
             \vspace{3cm}
-            {\yihao \bfseries \heiti \buaaatdegree 研究生学位论文 \par \buaaatdoctype \par} 
+            {\yihao \bf \heiti \buaaatdegree 研究生学位论文 \par \buaaatdoctype \par} 
             \vspace{4cm} 
             {\xiaosan \kaishu 
             \begin{tabular}{rc}
-            \textbf{\kaishu 论文题目}： & \buaaatthesistitle \\ \cline{2-2}
-            \textbf{\kaishu 专~~~~~~~~业}： & \buaaatmajor \\ \cline{2-2}
-            \textbf{\kaishu 研~~究~~生}： & \buaaatauthorname \\ \cline{2-2}
-            \textbf{\kaishu 学~~~~~~~~号}： & \buaaatstuno \\ \cline{2-2}
-            \textbf{\kaishu 指导教师}： & \buaaattutor \\ \cline{2-2}
+            {\kaishu \bfseries 论文题目}： & \buaaatthesistitle \\ \cline{2-2}
+            {\kaishu \bfseries 专~~~~~~~~业}： & \buaaatmajor \\ \cline{2-2}
+            {\kaishu \bfseries 研~~究~~生}： & \buaaatauthorname \\ \cline{2-2}
+            {\kaishu \bfseries 学~~~~~~~~号}： & \buaaatstuno \\ \cline{2-2}
+            {\kaishu \bfseries 指导教师}： & \buaaattutor \\ \cline{2-2}
             \end{tabular} \par}
             \vspace{3cm} 
             {\sanhao \heiti \buaaatuniversity \buaaatschool \par 
