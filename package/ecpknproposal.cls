@@ -226,12 +226,12 @@
             {\yihao \bf \heiti \buaaatdegree 研究生学位论文 \par \buaaatdoctype \par} 
             \vspace{4cm} 
             {\xiaosan \kaishu 
-            \begin{tabular}{rc}
+            \begin{tabular}{rp{10cm}}
             {\kaishu \bfseries 论文题目}： & \buaaatthesistitle \\ \cline{2-2}
-            {\kaishu \bfseries 专~~~~~~~~业}： & \buaaatmajor \\ \cline{2-2}
-            {\kaishu \bfseries 研~~究~~生}： & \buaaatauthorname \\ \cline{2-2}
-            {\kaishu \bfseries 学~~~~~~~~号}： & \buaaatstuno \\ \cline{2-2}
-            {\kaishu \bfseries 指导教师}： & \buaaattutor \\ \cline{2-2}
+            {\kaishu \bfseries 专~~~~~~~~业}： & \makecell[c]{\buaaatmajor} \\ \cline{2-2}
+            {\kaishu \bfseries 研~~究~~生}： & \makecell[c]{\buaaatauthorname} \\ \cline{2-2}
+            {\kaishu \bfseries 学~~~~~~~~号}： & \makecell[c]{\buaaatstuno} \\ \cline{2-2}
+            {\kaishu \bfseries 指导教师}： & \makecell[c]{\buaaattutor} \\ \cline{2-2}
             \end{tabular} \par}
             \vspace{3cm} 
             {\sanhao \heiti \buaaatuniversity \buaaatschool \par 
