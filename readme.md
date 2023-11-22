@@ -1,6 +1,8 @@
 # 北京航空航天大学中法工程师学院/国际通用工程学院开题报告/文献综述/中期报告模板（自制）
 本模板仅为个人兴趣之作，非官方模板。
 
+**注意！本模板必须使用XeTeX进行编译，不能使用pdfLaTeX进行编译。**
+
 本项目为中法工程师学院/国际通用工程学院研究生开题报告/文献综述/中期报告模板，基于[ZhouKanglei](https://github.com/ZhouKanglei)作者的[BUAAProposal](https://github.com/ZhouKanglei/BUAAProposal)进行二次开发而来，仅包含LaTeX模板。模板于2023年11月修订。
 
 ## 用法
